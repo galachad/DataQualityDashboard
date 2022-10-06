@@ -1,20 +1,23 @@
+#' List DQ checks
+#' 
 #' @name listDqChecks
 #' 
 #' @param cdmVersion                The CDM version to target for the data source. By default, 5.3.1 is used.
 #' @param tableCheckThresholdLoc    The location of the threshold file for evaluating the table checks. If not specified the default thresholds will be applied.
 #' @param fieldCheckThresholdLoc    The location of the threshold file for evaluating the field checks. If not specified the default thresholds will be applied.
 #' @param conceptCheckThresholdLoc  The location of the threshold file for evaluating the concept checks. If not specified the default thresholds will be applied.
+#' @param systemFileNamespace       The name of the package where the check are stored. If not specified the default `DataQualityDashboard` namespace will be applied.
 #'
 #' @return Details on all checks defined by the DataQualityDashboard Package.
 #'
 #' @export
-listDqChecks <- function(cdmVersion = "5.3.1", tableCheckThresholdLoc = "default", fieldCheckThresholdLoc = "default",conceptCheckThresholdLoc = "default") {
+listDqChecks <- function(cdmVersion = "5.3.1", tableCheckThresholdLoc = "default", fieldCheckThresholdLoc = "default",conceptCheckThresholdLoc = "default", systemFileNamespace = "DataQualityDashboard") {
   dqChecks <- {}
   dqChecks$checkDescriptions <-
     read.csv(system.file(
       "csv",
       sprintf("OMOP_CDMv%s_Check_Descriptions.csv", cdmVersion),
-      package = "DataQualityDashboard"
+      package = systemFileNamespace
     ),
     stringsAsFactors = FALSE)
   
@@ -25,7 +28,7 @@ listDqChecks <- function(cdmVersion = "5.3.1", tableCheckThresholdLoc = "default
         system.file(
           "csv",
           sprintf("OMOP_CDMv%s_Table_Level.csv", cdmVersion),
-          package = "DataQualityDashboard"
+          package = systemFileNamespace
         ),
         stringsAsFactors = FALSE,
         na.strings = c(" ", "")
@@ -44,7 +47,7 @@ listDqChecks <- function(cdmVersion = "5.3.1", tableCheckThresholdLoc = "default
         system.file(
           "csv",
           sprintf("OMOP_CDMv%s_Field_Level.csv", cdmVersion),
-          package = "DataQualityDashboard"
+          package = systemFileNamespace
         ),
         stringsAsFactors = FALSE,
         na.strings = c(" ", "")
@@ -63,7 +66,7 @@ listDqChecks <- function(cdmVersion = "5.3.1", tableCheckThresholdLoc = "default
         system.file(
           "csv",
           sprintf("OMOP_CDMv%s_Concept_Level.csv", cdmVersion),
-          package = "DataQualityDashboard"
+          package = systemFileNamespace
         ),
         stringsAsFactors = FALSE,
         na.strings = c(" ", "")
