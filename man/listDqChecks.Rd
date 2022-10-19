@@ -5,7 +5,7 @@
 \title{List DQ checks}
 \usage{
 listDqChecks(
-  cdmVersion = "5.3.1",
+  cdmVersion = "5.3",
   tableCheckThresholdLoc = "default",
   fieldCheckThresholdLoc = "default",
   conceptCheckThresholdLoc = "default",
@@ -13,7 +13,7 @@ listDqChecks(
 )
 }
 \arguments{
-\item{cdmVersion}{The CDM version to target for the data source. By default, 5.3.1 is used.}
+\item{cdmVersion}{The CDM version to target for the data source. By default, 5.3 is used.}
 
 \item{tableCheckThresholdLoc}{The location of the threshold file for evaluating the table checks. If not specified the default thresholds will be applied.}
 
@@ -23,9 +23,6 @@ listDqChecks(
 
 \item{systemFileNamespace}{The name of the package where the check are stored. If not specified the default `DataQualityDashboard` namespace will be applied.}
 }
-\value{
-Details on all checks defined by the DataQualityDashboard Package.
-}
 \description{
-List DQ checks
+Details on all checks defined by the DataQualityDashboard Package.
 }
